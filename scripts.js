@@ -2,6 +2,8 @@ const video = document.querySelector("video");
 const playButton = document.querySelector(".toggle");
 const volume = document.querySelector("input[name=volume]");
 const speed = document.querySelector("input[name=playbackRate]");
+const forward = document.querySelector("#forward");
+const backward = document.querySelector("#backward");
 
 video.addEventListener("click", pausePlay);
 
@@ -13,6 +15,14 @@ speed.addEventListener("change", function(){
 
 volume.addEventListener("change", function(){
     video.volume = volume.value;
+});
+
+forward.addEventListener("click", function(){
+    video.currentTime = video.currentTime + 25;
+});
+
+backward.addEventListener("click", function(){
+    video.currentTime = video.currentTime - 10;
 });
 
 function pausePlay(){
