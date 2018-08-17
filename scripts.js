@@ -18,3 +18,7 @@ playButton.addEventListener("click", function(){
 speed.addEventListener("change", function(){
     video.playbackRate = speed.value;
 });
+
+volume.addEventListener("change", function(){
+    video.volume = volume.value;
+});
