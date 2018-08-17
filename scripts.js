@@ -12,5 +12,9 @@ playButton.addEventListener("click", function(){
         video.pause();
         playButton.innerHTML = "&#9658;";
     }
-    
+
+});
+
+speed.addEventListener("change", function(){
+    video.playbackRate = speed.value;
 });
