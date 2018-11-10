@@ -8,7 +8,6 @@ const progress = document.querySelector(".progress__filled");
 const progressBar = document.querySelector(".progress");
 let duration;
 let barWidth;
-let flexWidth;
 
 // run this function once the video has fully loaded
 video.addEventListener("loadedmetadata", function(){
@@ -32,12 +31,12 @@ volume.addEventListener("change", function(){
 
 // if the forward button is clicked, increase the current time of the video by 25 seconds
 forward.addEventListener("click", function(){
-    video.currentTime = video.currentTime + 25;
+    video.currentTime += 25;
 });
 
 // if the back button is clicked, decrease the current time of the video by 10 seconds
 backward.addEventListener("click", function(){
-    video.currentTime = video.currentTime - 10;
+    video.currentTime -= 10;
 });
 
 video.ontimeupdate = changeBar; // run the changeBar function every time the time of the video updates
