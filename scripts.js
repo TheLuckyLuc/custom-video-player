@@ -5,6 +5,7 @@ const speed = document.querySelector("input[name=playbackRate]");
 const forward = document.querySelector("#forward");
 const backward = document.querySelector("#backward");
 const progress = document.querySelector(".progress__filled");
+const progressBar = document.querySelector(".progress");
 let duration;
 let barWidth;
 let flexWidth;
@@ -36,6 +37,9 @@ backward.addEventListener("click", function(){
 
 video.ontimeupdate = changeBar;
 
+// listen for a click on the progress bar
+progressBar.addEventListener("click", clickBar);
+
 function pausePlay(){
     if (video.paused) {
         video.play();
@@ -50,4 +54,14 @@ function changeBar(){
     barWidth = video.currentTime * duration;
     flexWidth = `${barWidth}%`;
     progress.style.flexBasis = flexWidth;
+}
+
+// function for clicking the progress bar
+function clickBar(event) {
+    const position = (event.offsetX / progressBar.offsetWidth) * 100; // divide the current pixel width that was clicked on, by the total pixel width of the progress bar & multiply it by 100 to get the percentage
+
+    const time = (position / 100) * video.duration; // grab the percentage number of the clicked position, divide it by 100 * multiply it by the total video duration to get the current amount of seconds that have been clicked on
+
+    video.currentTime = time; // update the current time of the video
+    progress.style.flexbasis = `${position}%`; // set the flex percentage to where the bar was clicked
 }
